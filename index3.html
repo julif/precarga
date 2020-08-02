@@ -12,6 +12,8 @@
     <img id="precarga_img_splash-art" src="img/1.png" width="150px">
     <img id="precarga_img_splash-art_logo" src="img/2.png" width="150px">
 
+    <div id="porcentaje"></div>
+
   </body>
   <script>
 
@@ -38,12 +40,18 @@ var preload_splash_imgs = 0;
     // console.log( "cargada imagen: "+ item  );
     preload_splash_imgs++;
     console.log(   "cargada imagen: "+ preload_splash_imgs +" de "+ numero_total );
+
+   
+
     if(preload_splash_imgs == numero_total){
       console.log(" ");
       console.log("//carga completada//"); 
       console.log(" ");
       //setTimeout(fadediv, 2000, splash, splash_art);
+      document.getElementById("porcentaje").innerHTML = "//carga completada//";
     }
+
+
   });
  }
 
