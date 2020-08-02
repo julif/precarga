@@ -23,7 +23,7 @@ var preload_splash_imgs = 0;
  function precargar_imagenes(a){
    $(a).on('load', function() {
     // console.log(a); 
-     preload_splash_imgs++;
+  
      
 
 
@@ -32,6 +32,8 @@ var preload_splash_imgs = 0;
    }).each(function() {
      if($(this).prop('complete')) $(this).load();
      console.log( "this:"+ a );
+     preload_splash_imgs++;
+
 
      if(preload_splash_imgs == 2){
         console.log("Imagenes de splash images fueron cargadas correctamente"); 
