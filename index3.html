@@ -13,11 +13,12 @@
     <img id="precarga_img_splash-art_logo" src="img/2.png" width="150px">
 
     <div id="porcentaje"></div>
+    <div id="terminado"></div>
 
   </body>
   <script>
 
-var preload_splash_imgs = 0;
+var imagenes_cargadas = 0;
 //var numero_total= 2;
  
 //  precargar_imagenes("#precarga_img_splash-art");
@@ -27,6 +28,7 @@ var preload_splash_imgs = 0;
  var imagenes_a_cargar = ["#precarga_img_splash-art", "#precarga_img_splash-art_logo"];
 
  var numero_total =  imagenes_a_cargar.length;
+ var porcentaje;
 
  imagenes_a_cargar.forEach(precargar_imagenes);
 
@@ -38,17 +40,22 @@ var preload_splash_imgs = 0;
   }).each(function() {
     if($(this).prop('complete')) $(this).load();
     // console.log( "cargada imagen: "+ item  );
-    preload_splash_imgs++;
-    console.log(   "cargada imagen: "+ preload_splash_imgs +" de "+ numero_total );
+    imagenes_cargadas++;
+    console.log(   "cargada imagen: "+ imagenes_cargadas +" de "+ numero_total );
+
+    
+
+    porcentaje = imagenes_cargadas* 100/  numero_total;   // saco el porcentaje de las imagenes cargadas
+    document.getElementById("porcentaje").innerHTML = "%"+porcentaje;
 
    
 
-    if(preload_splash_imgs == numero_total){
+    if( imagenes_cargadas == numero_total){
       console.log(" ");
       console.log("//carga completada//"); 
       console.log(" ");
       //setTimeout(fadediv, 2000, splash, splash_art);
-      document.getElementById("porcentaje").innerHTML = "//carga completada//";
+       document.getElementById("terminado").innerHTML = "//carga completada//";
     }
 
 
