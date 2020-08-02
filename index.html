@@ -19,6 +19,8 @@ var preload_splash_imgs = 0;
  
  precargar_imagenes("#precarga_img_splash-art");
  precargar_imagenes("#precarga_img_splash-art_logo");
+
+ var numero_total= 2;
  
  function precargar_imagenes(a){
    $(a).on('load', function() {
@@ -35,7 +37,7 @@ var preload_splash_imgs = 0;
      preload_splash_imgs++;
 
 
-     if(preload_splash_imgs == 2){
+     if(preload_splash_imgs == numero_total){
         console.log("Imagenes de splash images fueron cargadas correctamente"); 
         //setTimeout(fadediv, 2000, splash, splash_art);
        }

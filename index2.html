@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"><!-- hacer que el ancho se adapte a dispositivos -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script><!-- --- Jquery --- -->
+      <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style>
+
+      </style>
+  </head>
+  <body >
+
+    <img id="precarga_img_splash-art" src="img/1.png" width="150px">
+    <img id="precarga_img_splash-art_logo" src="img/2.png" width="150px">
+
+  </body>
+  <script>
+
+var preload_splash_imgs = 0;
+//var numero_total= 2;
+ 
+//  precargar_imagenes("#precarga_img_splash-art");
+//  precargar_imagenes("#precarga_img_splash-art_logo");
+
+
+ var imagenes_a_cargar = ["#precarga_img_splash-art", "#precarga_img_splash-art_logo"];
+
+ var numero_total =  imagenes_a_cargar.length;
+
+ imagenes_a_cargar.forEach(precargar_imagenes);
+
+
+ 
+ function precargar_imagenes(item, index){
+  $(item).on('load', function() {
+    //  console.log( item + index + 1 );
+  }).each(function() {
+    if($(this).prop('complete')) $(this).load();
+    console.log( "cargada imagen: "+ item  );
+    preload_splash_imgs++;
+    console.log(  preload_splash_imgs +" de "+ numero_total );
+    if(preload_splash_imgs == numero_total){
+      console.log("Imagenes de splash images fueron cargadas correctamente"); 
+      //setTimeout(fadediv, 2000, splash, splash_art);
+    }
+  });
+ }
+
+
+
+  </script>
+</html>
