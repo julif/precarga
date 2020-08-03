@@ -38,6 +38,7 @@
    
     <div id="porcentaje_contenedor"><div id="barra"></div>  <div id="porcentaje"></div></div>
     <div id="terminado"></div>
+    <button onclick="precarga(imagenes_a_cargar2 )">Click me</button>
   </body>
   <script>
  var imagenes_a_cargar = [
@@ -65,22 +66,24 @@
   var numero_total;
 
   function precarga( item ){ 
-    item.forEach(mostrar_imagenes_en_preloader);
-     numero_total =  item.length;
+    porcentaje = "0%";
+    document.getElementById("preloader").innerHTML = " ";
     imagenes_cargadas = 0;
-   }
-
-
+    numero_total =  item.length;
   
-  function mostrar_imagenes_en_preloader(item, index){
+
+    item.forEach(mostrar_imagenes_en_preloader);
+    
+    function mostrar_imagenes_en_preloader(item, index){
    document.getElementById("preloader").innerHTML +=    '<img  id="preloaded_element_'+ index +'" src="img/'+ item +'" >' ;
   }
 
-  var imagenes_en_preloader = $('#preloader').children('img').map(function(){
+    var imagenes_en_preloader = $('#preloader').children('img').map(function(){
     return $(this).attr('id');
   }).get()
-
   imagenes_en_preloader.forEach(precargar_imagenes);
+
+
   
   function precargar_imagenes(item, index){
     item ="#"+ item;
@@ -101,5 +104,20 @@
     }
   })// load function
 }//precargar_imagenes
+
+
+
+
+   }
+
+
+  
+
+
+  // var imagenes_en_preloader = $('#preloader').children('img').map(function(){
+  //   return $(this).attr('id');
+  // }).get()
+
+
   </script>
 </html>
