@@ -95,6 +95,7 @@
       console.log(   "cargada imagen: "+ imagenes_cargadas +" de "+ numero_total );
       // ------------- calcular y mostrar el porcentaje -----------------
       porcentaje = imagenes_cargadas* 100/  numero_total;   // saco el porcentaje de las imagenes cargadas
+      porcentaje = porcentaje.toFixed() //convertir en numero entero
       porcentaje =  porcentaje + "%" ;
       document.getElementById("porcentaje").innerHTML = porcentaje;
       document.getElementById("barra").style.width = porcentaje;
