@@ -8,11 +8,35 @@
         height: 50px;
         width: auto;
       }
+      #porcentaje_contenedor {
+    background-color: black;
+    color: white;
+    width: 400px;
+    height: 20px;
+    display: flex;
+    position: relative;
+    /* justify-content: space-around; */
+}
+#barra{
+  background-color: red;
+  display: block;
+    width: 0%;
+    height: 100%;
+    transition: width 1s;
+}
+#porcentaje{
+  color: white;
+    top: 0px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
     </style>
   </head>
   <body >
-    <div id="preloader"></div>
-    <div id="porcentaje"></div>
+    <div id="preloader"></div> 
+   
+    <div id="porcentaje_contenedor"><div id="barra"></div>  <div id="porcentaje"></div></div>
     <div id="terminado"></div>
   </body>
   <script>
@@ -56,7 +80,13 @@ item ="#"+ item;
     
     // ------------- calcular y mostrar el porcentaje -----------------
     porcentaje = imagenes_cargadas* 100/  numero_total;   // saco el porcentaje de las imagenes cargadas
-    document.getElementById("porcentaje").innerHTML = "%"+porcentaje;
+    porcentaje =  porcentaje + "%" ;
+    // console.log( porcentaje2 );
+    document.getElementById("porcentaje").innerHTML = porcentaje;
+
+    // document.getElementById("barra").style.width = "%"+porcentaje;
+     document.getElementById("barra").style.width = porcentaje;
+  
 
 
      // ------------- terminado -----------------
