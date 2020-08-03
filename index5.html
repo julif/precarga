@@ -22,7 +22,7 @@
   display: block;
     width: 0%;
     height: 100%;
-    transition: width 1s;
+    transition: width 0.5s;
 }
 #porcentaje{
   color: white;
@@ -47,9 +47,7 @@
    "3.png",
    "4.png",
    "5.png",
-   "6.png",
-   "7.png",
-   "img4.png"
+   "6.png"
   ];
   
   var imagenes_a_cargar2 = [
@@ -57,10 +55,15 @@
    "img4.png",
    "img4.png",
    "img4.png",
-   "img4.png"
+   "7.png"
   ];
   // var numero_total =  imagenes_a_cargar.length;
   precarga( imagenes_a_cargar );
+
+ 
+      porcentaje =  "0%" ;
+      document.getElementById("porcentaje").innerHTML = porcentaje;
+      document.getElementById("barra").style.width = porcentaje;
 
   var imagenes_cargadas = 0;
   var numero_total;
