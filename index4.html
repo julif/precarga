@@ -4,74 +4,74 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script><!-- --- Jquery --- -->
       <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <style>
-
-      </style>
+        #preloader img{
+        height: 50px;
+        width: auto;
+      }
+    </style>
   </head>
   <body >
-
-    <img id="precarga_img_splash-art" src="img/1.png" width="150px">
-    <img id="precarga_img_splash-art_logo" src="img/2.png" width="150px">
     <div id="preloader"></div>
-
     <div id="porcentaje"></div>
     <div id="terminado"></div>
-
   </body>
   <script>
+ var imagenes_a_cargar = [
+   "1.png", 
+   "2.png",
+   "3.png",
+   "4.png",
+   "5.png",
+   "6.png",
+   "7.png"
+  ];
+  var imagenes_cargadas = 0;
+  var numero_total =  imagenes_a_cargar.length;
 
-var imagenes_cargadas = 0;
-//var numero_total= 2;
- 
-//  precargar_imagenes("#precarga_img_splash-art");
-//  precargar_imagenes("#precarga_img_splash-art_logo");
-
-
- var imagenes_a_cargar = ["#precarga_img_splash-art", "#precarga_img_splash-art_logo"];
-//  imagenes_a_cargar.forEach(mostrar_imagenes);
-
-
-
-//  function mostrar_imagenes(item, index){
-
-//   document.getElementById("preloader").innerHTML += " <img  onload=\"contar("+ a_length +","+ c +") \" src=\"img/"+ a[e] +"\" height=\"100\" >
-//  }
-
- var numero_total =  imagenes_a_cargar.length;
- var porcentaje;
-
- imagenes_a_cargar.forEach(precargar_imagenes);
+  imagenes_a_cargar.forEach(mostrar_imagenes_en_preloader);
+  
+  function mostrar_imagenes_en_preloader(item, index){
+   document.getElementById("preloader").innerHTML +=    '<img  id="preloaded_element_'+ index +'" src="img/'+ item +'" >' ;
+  }
 
 
- 
- function precargar_imagenes(item, index){
-  $(item).on('load', function() {
+  var images = $('#preloader').children('img').map(function(){
+    return $(this).attr('id');
+}).get()
+
+images.forEach(precargar_imagenes);
+
+
+function precargar_imagenes(item, index){
+  
+item ="#"+ item;
+
+ $(item).on('load', function() {
     //  console.log( item + index + 1 );
   }).each(function() {
     if($(this).prop('complete')) $(this).load();
-    // console.log( "cargada imagen: "+ item  );
+    //console.log( item );
     imagenes_cargadas++;
     console.log(   "cargada imagen: "+ imagenes_cargadas +" de "+ numero_total );
 
-    
 
+
+    // ------------- calcular y mostrar el porcentaje -----------------
     porcentaje = imagenes_cargadas* 100/  numero_total;   // saco el porcentaje de las imagenes cargadas
     document.getElementById("porcentaje").innerHTML = "%"+porcentaje;
 
-   
 
+
+    // ------------- terminado -----------------
     if( imagenes_cargadas == numero_total){
       console.log(" ");
       console.log("//carga completada//"); 
       console.log(" ");
-      //setTimeout(fadediv, 2000, splash, splash_art);
        document.getElementById("terminado").innerHTML = "//carga completada//";
     }
 
 
   });
- }
-
-
-
+}
   </script>
 </html>
