@@ -23,7 +23,8 @@
    "4.png",
    "5.png",
    "6.png",
-   "7.png"
+   "7.png",
+   "img4.png"
   ];
   var imagenes_cargadas = 0;
   var numero_total =  imagenes_a_cargar.length;
@@ -48,27 +49,36 @@ item ="#"+ item;
 
  $(item).on('load', function() {
     //  console.log( item + index + 1 );
-  }).each(function() {
-    if($(this).prop('complete')) $(this).load();
-    //console.log( item );
+
     imagenes_cargadas++;
     console.log(   "cargada imagen: "+ imagenes_cargadas +" de "+ numero_total );
 
-
-
+    
     // ------------- calcular y mostrar el porcentaje -----------------
     porcentaje = imagenes_cargadas* 100/  numero_total;   // saco el porcentaje de las imagenes cargadas
     document.getElementById("porcentaje").innerHTML = "%"+porcentaje;
 
 
-
-    // ------------- terminado -----------------
-    if( imagenes_cargadas == numero_total){
+     // ------------- terminado -----------------
+     if( imagenes_cargadas == numero_total){
       console.log(" ");
       console.log("//carga completada//"); 
       console.log(" ");
        document.getElementById("terminado").innerHTML = "//carga completada//";
     }
+
+
+  }).each(function() {
+    if($(this).prop('complete')) $(this).load();
+    //console.log( item );
+    
+
+
+
+
+
+
+   
 
 
   });
